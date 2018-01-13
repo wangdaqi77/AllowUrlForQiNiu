@@ -1,30 +1,29 @@
-package com.wq.allowurl.impl;
+package com.wq.impl;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.wq.allowurl.base.AbsRuleHandler;
-import com.wq.allowurl.inter.IGetUrlDiskFramework;
+import com.wq.allowurl.inter.IAllowUrDiskFramework;
 
 /**
- *
  * Create by wq on 2018/1/11.
  */
 @SuppressWarnings("all")
-public class GetUrlFromDiskCacheSpImpl implements IGetUrlDiskFramework {
-    private static GetUrlFromDiskCacheSpImpl INSTANCE;
+public class AllowUrlCacheSpImpl implements IAllowUrDiskFramework {
+    private static AllowUrlCacheSpImpl INSTANCE;
     private static final String SP_NAME = "qn_urls";
     private final SharedPreferences mSp;
     private final SharedPreferences.Editor mEdit;
 
-    public static GetUrlFromDiskCacheSpImpl getInstance(Context context) {
+    public static AllowUrlCacheSpImpl getInstance(Context context) {
         if (INSTANCE == null) {
-            INSTANCE = new GetUrlFromDiskCacheSpImpl(context);
+            INSTANCE = new AllowUrlCacheSpImpl(context);
         }
         return INSTANCE;
     }
 
-    public GetUrlFromDiskCacheSpImpl(Context context) {
+    public AllowUrlCacheSpImpl(Context context) {
         if (null == context){
             throw new NullPointerException("context can't null !!");
         }

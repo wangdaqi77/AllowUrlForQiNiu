@@ -1,6 +1,5 @@
 package com.wq.allowurl.base;
 
-import com.wq.allowurl.UriDecodeFix;
 import com.wq.allowurl.inter.IRuleHandle;
 
 /**
@@ -30,7 +29,7 @@ public abstract class AbsRuleHandler<P> implements IRuleHandle {
      */
     @Override
     public void setAllowUrl(String allowUrl) {
-        this.mAllowUrl = UriDecodeFix.fix(allowUrl);
+        this.mAllowUrl = allowUrl;
     }
 
     @Override

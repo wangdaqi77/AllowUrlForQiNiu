@@ -18,9 +18,9 @@ public class BufferEntity<T> {
         this.callback = new SoftReference<>(callback);
     }
 
-    public void success(String url) {
+    public void success(String allowUrl) {
         if (callback != null && callback.get() != null/* && target != null && target.get() != null*/) {
-            callback.get().success(target == null ? null : target.get(), url);
+            callback.get().success(target == null ? null : target.get(), allowUrl);
         }
     }
 }

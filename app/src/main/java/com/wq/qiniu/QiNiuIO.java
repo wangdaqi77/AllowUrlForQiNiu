@@ -2,9 +2,9 @@ package com.wq.qiniu;
 
 import android.content.Context;
 
-import com.wq.allowurl.impl.GetUrlFromDiskCacheSpImpl;
-import com.wq.allowurl.inter.IGetUrlDiskFramework;
-import com.wq.allowurl.inter.IGetUrlNetFramework;
+import com.wq.impl.AllowUrlCacheSpImpl;
+import com.wq.allowurl.inter.IAllowUrDiskFramework;
+import com.wq.allowurl.inter.IAllowUrNetFramework;
 import com.wq.allowurl.inter.IO;
 
 /**
@@ -20,12 +20,12 @@ public class QiNiuIO implements IO {
     }
 
     @Override
-    public IGetUrlNetFramework netFramework() {
+    public IAllowUrNetFramework netFramework() {
         return new QiNiuNetFrameworkImpl();
     }
 
     @Override
-    public IGetUrlDiskFramework diskFramework() {
-        return new GetUrlFromDiskCacheSpImpl(mContext);
+    public IAllowUrDiskFramework diskFramework() {
+        return new AllowUrlCacheSpImpl(mContext);
     }
 }

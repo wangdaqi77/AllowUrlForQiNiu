@@ -4,8 +4,8 @@ import com.wq.allowurl.callback.NetFrameworkCallBack;
 import com.wq.allowurl.callback.OnAllowUrlSuccessListener;
 import com.wq.allowurl.entity.BufferEntity;
 import com.wq.allowurl.base.AbsRuleHandler;
-import com.wq.allowurl.inter.IGetUrlDiskFramework;
-import com.wq.allowurl.inter.IGetUrlNetFramework;
+import com.wq.allowurl.inter.IAllowUrDiskFramework;
+import com.wq.allowurl.inter.IAllowUrNetFramework;
 
 import java.lang.ref.SoftReference;
 import java.util.ArrayList;
@@ -17,15 +17,15 @@ import java.util.List;
  */
 class GetAllowUrlBuffer<P, T> implements NetFrameworkCallBack {
     private AbsRuleHandler<P> mRuleHandler;
-    private IGetUrlDiskFramework mGetUrlFromDiskCache;
-    private IGetUrlNetFramework<P> mGetUrlNetFramework;
+    private IAllowUrDiskFramework mDiskCache;
+    private IAllowUrNetFramework<P> mNetFramework;
     private List<SoftReference<BufferEntity<T>>> mBuffer = new ArrayList<>();
     private String mAllowUrl;
     private boolean mRequesting;
 
-    GetAllowUrlBuffer(IGetUrlNetFramework<P> getUrlFramework, IGetUrlDiskFramework getUrlFromDiskCache, AbsRuleHandler<P> ruleHandler) {
-        this.mGetUrlNetFramework = getUrlFramework;
-        this.mGetUrlFromDiskCache = getUrlFromDiskCache;
+    GetAllowUrlBuffer(IAllowUrNetFramework<P> getUrlFramework, IAllowUrDiskFramework getUrlFromDiskCache, AbsRuleHandler<P> ruleHandler) {
+        this.mNetFramework = getUrlFramework;
+        this.mDiskCache = getUrlFromDiskCache;
         this.mRuleHandler = ruleHandler;
     }
 
@@ -35,8 +35,8 @@ class GetAllowUrlBuffer<P, T> implements NetFrameworkCallBack {
 
     void start(T target, OnAllowUrlSuccessListener<T> callBack) {
         // 从本地获取下载地址
-        if (null != mGetUrlFromDiskCache && null == mAllowUrl) {
-            mAllowUrl = mGetUrlFromDiskCache.getDownUrl(mRuleHandler);
+        if (null != mDiskCache && null == mAllowUrl) {
+            mAllowUrl = mDiskCache.getDownUrl(mRuleHandler);
             mRuleHandler.setAllowUrl(mAllowUrl);
         }
 
@@ -53,16 +53,16 @@ class GetAllowUrlBuffer<P, T> implements NetFrameworkCallBack {
             return;
         }
 
-        if (mGetUrlNetFramework != null) {
+        if (mNetFramework != null) {
             mRequesting = true;
-            mGetUrlNetFramework.load(mRuleHandler, this);
+            mNetFramework.load(mRuleHandler, this);
         }
     }
 
     @Override
-    public void success(String url) {
+    public void success(String allowUrl) {
         try {
-            mAllowUrl = UriDecodeFix.fix(url);
+            mAllowUrl = allowUrl;
             mRuleHandler.setAllowUrl(mAllowUrl);
             if (null != mAllowUrl) {
                 mRequesting = false;
@@ -73,8 +73,8 @@ class GetAllowUrlBuffer<P, T> implements NetFrameworkCallBack {
                 }
             }
             mBuffer.clear();
-            if (mGetUrlFromDiskCache != null) {
-                mGetUrlFromDiskCache.save(mRuleHandler, mAllowUrl);
+            if (mDiskCache != null) {
+                mDiskCache.save(mRuleHandler, mAllowUrl);
             }
         } catch (Exception e) {
             e.printStackTrace();

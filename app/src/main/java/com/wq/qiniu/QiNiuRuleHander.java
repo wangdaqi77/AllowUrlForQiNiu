@@ -12,8 +12,6 @@ public class QiNiuRuleHander extends AbsRuleHandler<ReqParams> {
     // ?e=1512374575
     // &token=dTVWOtVUIiuiyke-tBBl8pl1w6sdK3iO_kE4p9yQ:lLQPEeHQ0ZYPkn894zID1YAeIe4
 
-    private static final int OUT_TIME_MINUTE = 60;  //过期时间60分钟
-
     public QiNiuRuleHander(ReqParams disallowUrl) {
         super(disallowUrl);
     }
@@ -51,7 +49,7 @@ public class QiNiuRuleHander extends AbsRuleHandler<ReqParams> {
      * 此处过期时长1小时
      */
     private boolean isTimeOut(long outTime) {
-        return System.currentTimeMillis() / 1000 > outTime - OUT_TIME_MINUTE;
+        return System.currentTimeMillis() / 1000 > outTime;
     }
 
     /**
