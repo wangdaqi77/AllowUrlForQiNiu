@@ -1,1 +1,1 @@
-include ':app', ':allowurl'
+include ':app', ':allow-url'
