@@ -11,8 +11,6 @@ import com.wq.allowurl.base.AbsRuleHandler;
 import com.wq.allowurl.callback.NetFrameworkCallBack;
 import com.wq.allowurl.inter.IGetUrlNetFramework;
 
-import org.json.JSONObject;
-
 /**
  * Create by wq on 2018/1/11.
  */
@@ -22,7 +20,6 @@ public class QiNiuNetFrameworkImpl implements IGetUrlNetFramework<ReqParams> {
     public void load(final AbsRuleHandler<ReqParams> ruleHandler, final NetFrameworkCallBack callBack) {
         // 参数
         ReqParams params = ruleHandler.getParams();
-        String json = JSONObject.wrap(params).toString();
 
         // 模拟网络请求
         new Thread() {
