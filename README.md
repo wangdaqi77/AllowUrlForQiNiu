@@ -1,0 +1,2 @@
+# AllowUrlForQiNiu
+从服务器获取七牛带凭证的url的缓存框架
