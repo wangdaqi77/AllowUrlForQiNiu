@@ -1,6 +1,5 @@
 package com.wq.qiniu;
 
-import android.annotation.SuppressLint;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
@@ -14,7 +13,7 @@ import com.wq.allowurl.inter.IGetUrlNetFramework;
 /**
  * Create by wq on 2018/1/11.
  */
-@SuppressLint("all")
+@SuppressWarnings("all")
 public class QiNiuNetFrameworkImpl implements IGetUrlNetFramework<ReqParams> {
     @Override
     public void load(final AbsRuleHandler<ReqParams> ruleHandler, final NetFrameworkCallBack callBack) {
