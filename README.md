@@ -1,4 +1,4 @@
-# 从服务器获取七牛云带凭证的url的缓存框架
+# 从服务器获取七牛云带凭证的url的缓存框架DEMO
 
 ## 引用库
 [allow-url](https://github.com/wangdaqi77/allow-url)
