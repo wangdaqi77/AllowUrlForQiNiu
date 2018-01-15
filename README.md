@@ -14,14 +14,24 @@
 		maven { url 'https://jitpack.io' }
 	    }
 	}
+	
 #### Step 2. 在module中添加compile 'com.github.wangdaqi77:allow-url:1.0.1'
+
 	dependencies {
 	    ...
 	    compile 'com.github.wangdaqi77:allow-url:1.0.1'
 	}
+	
 #### Step 3. 初始化AllowUrl.create().io(new QiNiuIO(context)); 建议在在自定义Application的oncreate()初始化;
 
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        AllowUrl.create().io(new QiNiuIO(this));
+    }
+
 #### Step 4. 具体使用，例如：加载图片
+
 	AllowUrl.load(new QiNiuRuleHander(reqParams), imageView, new OnAllowUrlSuccessListener<ImageView>() {
 	    @Override
 	    public void success(ImageView target, String allowUrl) {
