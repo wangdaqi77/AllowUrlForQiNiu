@@ -1,10 +1,10 @@
-package com.wq;
+package com.wq.allowurldemo;
 
 import android.app.Application;
 import android.content.Context;
 
 import com.wq.allowurl.AllowUrl;
-import com.wq.qiniu.QiNiuIO;
+import com.wq.allowurldemo.qiniu.io.QiNiuIO;
 
 /**
  *

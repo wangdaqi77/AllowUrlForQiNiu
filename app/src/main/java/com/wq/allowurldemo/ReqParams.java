@@ -1,4 +1,4 @@
-package com.wq;
+package com.wq.allowurldemo;
 
 /**
  * Create by wq on 2018/1/13.

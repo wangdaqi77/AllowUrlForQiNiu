@@ -1,4 +1,4 @@
-package com.wq;
+package com.wq.allowurldemo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,7 +8,7 @@ import android.widget.ImageView;
 
 import com.wq.allowurl.AllowUrl;
 import com.wq.allowurl.callback.OnAllowUrlSuccessListener;
-import com.wq.qiniu.QiNiuRuleHander;
+import com.wq.allowurldemo.qiniu.QiNiuRuleHander;
 
 public class MainActivity extends AppCompatActivity {
 

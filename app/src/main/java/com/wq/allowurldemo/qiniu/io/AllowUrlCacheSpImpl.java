@@ -1,4 +1,4 @@
-package com.wq.impl;
+package com.wq.allowurldemo.qiniu.io;
 
 import android.content.Context;
 import android.content.SharedPreferences;

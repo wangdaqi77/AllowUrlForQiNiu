@@ -1,11 +1,11 @@
-package com.wq.qiniu;
+package com.wq.allowurldemo.qiniu.io;
 
 import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
 
-import com.wq.MyApplication;
-import com.wq.ReqParams;
+import com.wq.allowurldemo.MyApplication;
+import com.wq.allowurldemo.ReqParams;
 import com.wq.allowurl.base.AbsRuleHandler;
 import com.wq.allowurl.callback.NetFrameworkCallBack;
 import com.wq.allowurl.inter.IAllowUrNetFramework;

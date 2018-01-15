@@ -1,6 +1,6 @@
-package com.wq.qiniu;
+package com.wq.allowurldemo.qiniu;
 
-import com.wq.ReqParams;
+import com.wq.allowurldemo.ReqParams;
 import com.wq.allowurl.base.AbsRuleHandler;
 
 /**

@@ -1,8 +1,7 @@
-package com.wq.qiniu;
+package com.wq.allowurldemo.qiniu.io;
 
 import android.content.Context;
 
-import com.wq.impl.AllowUrlCacheSpImpl;
 import com.wq.allowurl.inter.IAllowUrDiskFramework;
 import com.wq.allowurl.inter.IAllowUrNetFramework;
 import com.wq.allowurl.inter.IO;
