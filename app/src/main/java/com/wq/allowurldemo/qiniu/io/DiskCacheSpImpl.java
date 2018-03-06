@@ -4,26 +4,26 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.wq.allowurl.base.AbsRuleHandler;
-import com.wq.allowurl.inter.IAllowUrDiskFramework;
+import com.wq.allowurl.io.IDisk;
 
 /**
  * Create by wq on 2018/1/11.
  */
 @SuppressWarnings("all")
-public class AllowUrlCacheSpImpl implements IAllowUrDiskFramework {
-    private static AllowUrlCacheSpImpl INSTANCE;
+public class DiskCacheSpImpl implements IDisk<String> {
+    private static DiskCacheSpImpl INSTANCE;
     private static final String SP_NAME = "qn_urls";
     private final SharedPreferences mSp;
     private final SharedPreferences.Editor mEdit;
 
-    public static AllowUrlCacheSpImpl getInstance(Context context) {
+    public static DiskCacheSpImpl getInstance(Context context) {
         if (INSTANCE == null) {
-            INSTANCE = new AllowUrlCacheSpImpl(context);
+            INSTANCE = new DiskCacheSpImpl(context);
         }
         return INSTANCE;
     }
 
-    public AllowUrlCacheSpImpl(Context context) {
+    public DiskCacheSpImpl(Context context) {
         if (null == context){
             throw new NullPointerException("context can't null !!");
         }
@@ -35,7 +35,7 @@ public class AllowUrlCacheSpImpl implements IAllowUrDiskFramework {
         mEdit.putString(ruleHandler.getKey(), url).apply();
     }
 
-    public String getDownUrl(AbsRuleHandler ruleHandler) {
+    public String getAllowValue(AbsRuleHandler ruleHandler) {
         return mSp.getString(ruleHandler.getKey(), null);
     }
 }

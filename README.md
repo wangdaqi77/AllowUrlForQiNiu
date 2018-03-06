@@ -1,7 +1,7 @@
 # 从服务器获取七牛云带凭证的url的缓存框架DEMO
 
 ## 引用库
-[allow-url](https://github.com/wangdaqi77/allow-url)
+[allow](https://github.com/wangdaqi77/allow)
 
 ## 使用方式
 
@@ -14,15 +14,19 @@ allprojects {
         maven { url 'https://jitpack.io' }
     }
 }
-#### Step 2. 在module中添加compile 'com.github.wangdaqi77:allow-url:1.0.1'
+#### Step 2. 在module中添加compile 'com.github.wangdaqi77:allow:1.0.7'
 dependencies {
     ...
-    compile 'com.github.wangdaqi77:allow-url:1.0.1'
+    compile 'com.github.wangdaqi77:allow:1.0.7'
 }
-#### Step 3. 初始化AllowUrl.create().io(new QiNiuIO(context)); 建议在在自定义Application的oncreate()初始化;
-
+#### Step 3. 初始化Allow.create().io(new QiNiuIO(context)); 建议在在自定义Application的onCreate()初始化;
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Allow.create().io(IO);
+    }
 #### Step 4. 具体使用，例如：加载图片
-AllowUrl.load(new QiNiuRuleHander(reqParams), imageView, new OnAllowUrlSuccessListener<ImageView>() {
+初始化Allow.load(new QiNiuRuleHander(reqParams), imageView, new OnAllowValueCallBack<ImageView, String>() {
     @Override
     public void success(ImageView target, String allowUrl) {
         // 图片框架加载图片 ...
@@ -34,10 +38,10 @@ AllowUrl.load(new QiNiuRuleHander(reqParams), imageView, new OnAllowUrlSuccessLi
 
 ### IO
 QiNiuIO，创建请求数据和磁盘缓存框架
-##### IAllowUrNetFramework<P>
-	QiNiuNetFrameworkImpl 请求数据，注意：只是模拟从服务器获取凭证url
-##### IAllowUrDiskFramework
-	AllowUrlCacheSpImpl   sp缓存
+##### INet<P>
+	QiNiuNetImpl 请求数据，注意：只是模拟从服务器获取凭证url
+##### IDisk
+	DiskCacheSpImpl   sp缓存
 
 ### AbsRuleHandler
 QiNiuRuleHander 七牛云凭证的过期规则

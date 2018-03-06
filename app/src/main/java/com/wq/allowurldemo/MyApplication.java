@@ -3,7 +3,7 @@ package com.wq.allowurldemo;
 import android.app.Application;
 import android.content.Context;
 
-import com.wq.allowurl.AllowUrl;
+import com.wq.allowurl.Allow;
 import com.wq.allowurldemo.qiniu.io.QiNiuIO;
 
 /**
@@ -17,6 +17,6 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         context = this;
-        AllowUrl.create().io(new QiNiuIO(this));
+        Allow.create().io(new QiNiuIO(this));
     }
 }

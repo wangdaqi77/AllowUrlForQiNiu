@@ -1,16 +1,17 @@
 package com.wq.allowurldemo.qiniu;
 
-import com.wq.allowurldemo.ReqParams;
 import com.wq.allowurl.base.AbsRuleHandler;
+import com.wq.allowurldemo.ReqParams;
 
 /**
  * Create by wq on 2018/1/11.
  */
 @SuppressWarnings("all")
-public class QiNiuRuleHander extends AbsRuleHandler<ReqParams> {
+public class QiNiuRuleHander extends AbsRuleHandler<ReqParams, String> {
     // http://memberdata.***.com/17f0627291760d0800d4af3f0371c269
     // ?e=1512374575
     // &token=dTVWOtVUIiuiyke-tBBl8pl1w6sdK3iO_kE4p9yQ:lLQPEeHQ0ZYPkn894zID1YAeIe4
+    private String qnUrl;
 
     public QiNiuRuleHander(ReqParams disallowUrl) {
         super(disallowUrl);
@@ -32,11 +33,21 @@ public class QiNiuRuleHander extends AbsRuleHandler<ReqParams> {
         return isTimeOut(getOutTime());
     }
 
+    @Override
+    public String getAllowValue() {
+        return qnUrl;
+    }
+
+    @Override
+    public void setAllowValue(String s) {
+        this.qnUrl = s;
+    }
+
     public long getOutTime() {
         long result = 0;
         try {
             String timeKey = "?e=";
-            String timeStr = getAllowUrl().substring(getAllowUrl().indexOf(timeKey) + timeKey.length(), getAllowUrl().indexOf("&token="));
+            String timeStr = getAllowValue().substring(getAllowValue().indexOf(timeKey) + timeKey.length(), getAllowValue().indexOf("&token="));
             result = Long.parseLong(timeStr);
         } catch (Exception e) {
             // no thing
