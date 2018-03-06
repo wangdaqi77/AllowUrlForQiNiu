@@ -10,6 +10,8 @@ import com.wq.allowurl.Allow;
 import com.wq.allowurl.callback.OnAllowValueCallBack;
 import com.wq.allowurldemo.qiniu.QiNiuRuleHander;
 
+import java.io.Serializable;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override

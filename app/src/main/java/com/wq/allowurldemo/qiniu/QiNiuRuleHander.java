@@ -1,12 +1,11 @@
 package com.wq.allowurldemo.qiniu;
 
-import com.wq.allowurl.base.AbsRuleHandler;
+import com.wq.allowurl.rule.AbsRuleHandler;
 import com.wq.allowurldemo.ReqParams;
 
 /**
  * Create by wq on 2018/1/11.
  */
-@SuppressWarnings("all")
 public class QiNiuRuleHander extends AbsRuleHandler<ReqParams, String> {
     // http://memberdata.***.com/17f0627291760d0800d4af3f0371c269
     // ?e=1512374575

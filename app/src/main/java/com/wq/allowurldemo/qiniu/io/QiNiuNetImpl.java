@@ -4,19 +4,18 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
 
-import com.wq.allowurl.base.AbsRuleHandler;
 import com.wq.allowurl.callback.NetCallBack;
 import com.wq.allowurl.io.INet;
+import com.wq.allowurl.rule.AbsRuleHandler;
 import com.wq.allowurldemo.MyApplication;
 import com.wq.allowurldemo.ReqParams;
 
 /**
  * Create by wq on 2018/1/11.
  */
-@SuppressWarnings("all")
 public class QiNiuNetImpl implements INet<ReqParams,String> {
     @Override
-    public void load(final AbsRuleHandler<ReqParams,String> ruleHandler, final NetCallBack callBack) {
+    public void load(final AbsRuleHandler<ReqParams,String> ruleHandler, final NetCallBack<String> callBack) {
         // 参数
         final ReqParams params = ruleHandler.getParams();
         // 模拟网络请求

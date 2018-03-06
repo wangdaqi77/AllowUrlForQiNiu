@@ -3,8 +3,8 @@ package com.wq.allowurldemo.qiniu.io;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.wq.allowurl.base.AbsRuleHandler;
 import com.wq.allowurl.io.IDisk;
+import com.wq.allowurl.rule.AbsRuleHandler;
 
 /**
  * Create by wq on 2018/1/11.
